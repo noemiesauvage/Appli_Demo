@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-4">
+                    <!-- Logo -->
+                    <div>
+                        <a href="/" class="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
+                            <svg class="h-6 w-6 mr-1 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                            <span class="font-bold">Démocratie participative</span>
+                        </a>
+                    </div>
+                    <!-- Primary Nav -->
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="/repondre" class="py-5 px-3 text-gray-700 hover:text-gray-900">Répondre</a>
+                        <a href="/generate_wordcloud" class="py-5 px-3 text-gray-700 hover:text-gray-900">Nuages de mots</a>
+                        <a href="/resultats" class="py-5 px-3 text-gray-700 hover:text-gray-900">Résultats détaillés</a>
+                    </div>
+                </div>
+                <!-- Mobile button -->
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button">
+                        <svg class="h-6 w-6 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden">
+            <a href="/repondre" class="block py-2 px-4 text-sm hover:bg-gray-200">Répondre</a>
+            <a href="/genrate_wordcloud" class="block py-2 px-4 text-sm hover:bg-gray-200">Nuages de mots</a>
+            <a href="/resultats" class="block py-2 px-4 text-sm hover:bg-gray-200">Résultats détaillés</a>
+        </div>
+    </nav>
+    <div class="flex flex-col items-center justify-center h-screen">
+        <h1 class="font-sans text-3xl font-bold mb-6">Donnez votre avis</h1>
+        <form method="post" action="/save" class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
+            <div class="mb-4">
+                <label for="en_tant_que" class="block text-gray-700 font-medium mb-2">En tant que :</label>
+                <select id="en_tant_que" name="en_tant_que" required class="block w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                    <option value="">Sélectionnez une option</option>
+                    {% for option in options_en_tant_que %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="mb-4">
+                <label for="jaimerais" class="block text-gray-700 font-medium mb-2">J'aimerais :</label>
+                <textarea id="jaimerais" name="jaimerais" required class="block w-full bg-gray-100 border border-gray-300 rounded-md p-2"></textarea>
+            </div>
+            
+            <div class="mb-4">
+                <label for="afin_de_parce_que" class="block text-gray-700 font-medium mb-2">Afin de / Parce que :</label>
+                <textarea  id="afin_de_parce_que" name="afin_de_parce_que" required class="block w-full bg-gray-100 border border-gray-300 rounded-md p-2"></textarea>
+            </div>
+            
+            <div class="text-center">
+                <input type="submit" value="Envoyer" class="bg-blue-500 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const btn = document.querySelector('button.mobile-menu-button');
+        const menu = document.querySelector('.mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
