@@ -6,3 +6,5 @@ Lancez appdemo.py sur VS Code, puis ouvrez internet et allez à cette adresse : 
 Il ne vous reste plus qu'a répondre au petit formulaire (30 secondes)
 
 Vous pouvez répondre autant de fois que vous le voulez (pas trop de bêtises svp)
+
+Merci !
