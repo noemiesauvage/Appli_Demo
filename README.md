@@ -1,4 +1,4 @@
-Merci de bien vouloir télécharger tous les fichiers de ce git, à savoir le dossier templates dans lequel se trouve "forms.html" ainsi que appdemo.py. 
+Merci de bien vouloir télécharger tous les fichiers de ce git, à savoir le dossier templates dans lequel se trouve "forms.html" ainsi que "appdemo.py". 
 
 Lancez appdemo.py sur VS Code, puis ouvrez internet et allez à cette adresse : http://127.0.0.1:5000
 
