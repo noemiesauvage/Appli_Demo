@@ -1,28 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
-import csv
-from wordcloud import WordCloud
 import pandas as pd
-import numpy as np
-import io
-import base64
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-import nltk
 import requests
 import logging
-import matplotlib.pyplot as plt
 
-#tests noémie
-# Configurez ces variables avec vos informations Notion
+
 NOTION_API_URL = "https://api.notion.com/v1/pages"
 NOTION_API_KEY = "secret_3lW3pscXNMTLyVt8ucguorEg8Zrtld5rOo04jLOD43o"
 DATABASE_ID = "d6e83d295d2c40548fdc0fa0241a24c4"
 NOTION_QUERY_URL = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
-
-# Télécharger les ressources nltk
-nltk.download('punkt')
-nltk.download('stopwords')
-
 
 
 app = Flask(__name__)
@@ -135,11 +120,6 @@ def save():
         NewIndex = max_index + 1
     
     Index = str(NewIndex)  # Convertir en chaîne de caractères
-
-    # Sauvegarder dans un fichier CSV
-    with open('data.csv', 'a', newline='', encoding='utf-8') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow([en_tant_que, jaimerais, afin_de_parce_que])
 
     # Envoyer les données à Notion
     notion_data = {
