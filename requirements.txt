@@ -4,3 +4,5 @@ numpy==1.22.0
 pandas==1.3.3
 wordcloud
 gunicorn
+pip==24.1.2
+
